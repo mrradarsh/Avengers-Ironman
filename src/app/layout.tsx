@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
 };
 
+import { BrandingGuard } from "@/components/providers/BrandingGuard";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -29,7 +31,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="relative min-h-full bg-background text-foreground grain">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <BrandingGuard>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </BrandingGuard>
       </body>
     </html>
   );
